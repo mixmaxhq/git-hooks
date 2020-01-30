@@ -10,7 +10,7 @@
     "mixmax-git-hooks": "./dist/bin/index.js"
   },
   "scripts": {
-    "build": "del dist && rollup \"-c$([ \"$WATCH\" = true ] && echo w)\"",
+    "build": "del dist && rollup \"-c$([ \"$WATCH\" = true ] && echo w)\" && chmod +x dist/bin/index.js",
     "ci": "npm run lint",
     "ci:commitlint": "commitlint-jenkins --pr-only",
     "lint": "eslint . && flow",
