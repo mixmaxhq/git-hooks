@@ -8,4 +8,4 @@ export function getHooks(bin: string) {
   return { hooks };
 }
 
-export const hooks = getHooks('mixmax-git-hooks');
+export const { hooks } = getHooks('mixmax-git-hooks');
