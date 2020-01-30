@@ -1,7 +1,7 @@
 import { commitlintOrExit } from '../commitlint';
 import { expectEnabled, getMode } from '../config';
 import { once } from 'lodash';
-import { git } from '../git-utils';
+import { git, getCurrentBranch } from '../git-utils';
 
 const getRemoteBranch = once(async function getRemoteBranch() {
   const headRef = await git('symbolic-ref', '-q', 'HEAD');
@@ -34,7 +34,7 @@ export default {
     switch (mode) {
       case 'unpushed': {
         const [localBranch, remoteBranch] = await Promise.all([
-          git('branch', '--show-current'),
+          getCurrentBranch(),
           getRemoteBranch(),
         ]);
 
