@@ -1,9 +1,7 @@
-import execa from 'execa';
 import { commitlintOrExit } from '../commitlint';
 import { expectEnabled, getMode } from '../config';
 import { once } from 'lodash';
-
-const git = (...args) => execa('git', args).then(({ stdout }) => stdout);
+import { git } from '../git-utils';
 
 const getRemoteBranch = once(async function getRemoteBranch() {
   const headRef = await git('symbolic-ref', '-q', 'HEAD');
