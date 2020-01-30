@@ -16,8 +16,9 @@ async function getRemote() {
 
   const remotes = (await git('remote')).split(/\s+/);
   if (remotes.includes('origin')) return 'origin';
+  if (remotes.length === 1) return remotes[0];
 
-  throw new Error('cannot determine origin remote');
+  throw new Error('cannot determine appropriate remote - please set upstream');
 }
 
 async function getDefaultBranch({ remote = true } = {}) {
