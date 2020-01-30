@@ -1,24 +1,26 @@
 {
-  "name": "@mixmaxhq/(TEMPLATE_MODULE)",
-  "private": true,
-  "version": "1.0.0",
-  "description": "A template for shared modules at Mixmax.",
+  "name": "@mixmaxhq/git-hooks",
+  "version": "0.0.0",
+  "description": "Shared git-hooks at Mixmax, for use with Husky.",
   "main": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "bin": {
+    "mixmax-git-hooks": "./dist/bin/index.js"
+  },
   "scripts": {
     "build": "del dist && rollup \"-c$([ \"$WATCH\" = true ] && echo w)\"",
-    "ci": "npm run lint && npm test",
+    "ci": "npm run lint",
     "ci:commitlint": "commitlint-jenkins --pr-only",
     "lint": "eslint . && flow",
     "prepublishOnly": "npm run build && if [ \"$CI\" = '' ]; then node -p 'JSON.parse(process.env.npm_package_config_manualPublishMessage)'; exit 1; fi",
     "semantic-release": "semantic-release",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mixmaxhq/TEMPLATE_MODULE.git"
+    "url": "git+ssh://git@github.com/mixmaxhq/git-hooks.git"
   },
   "author": "Mixmax <hello@mixmax.com> (https://mixmax.com)",
   "contributors": [
@@ -27,14 +29,16 @@
   ],
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/mixmaxhq/TEMPLATE_MODULE/issues"
+    "url": "https://github.com/mixmaxhq/git-hooks/issues"
   },
-  "homepage": "https://github.com/mixmaxhq/TEMPLATE_MODULE#readme",
+  "homepage": "https://github.com/mixmaxhq/git-hooks#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/preset-flow": "^7.8.3",
+    "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@mixmaxhq/commitlint-jenkins": "^1.4.2",
     "@mixmaxhq/prettier-config": "^1.0.0",
@@ -42,19 +46,19 @@
     "cz-conventional-changelog": "^3.0.2",
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
-    "eslint-config-mixmax": "^4.6.0",
-    "flow-bin": "^0.116.1",
-    "jest": "^24.9.0",
-    "nock": "^11.7.2",
+    "eslint-config-mixmax": "^4.7.0",
+    "flow-bin": "^0.117.0",
+    "husky": "^4.2.1",
     "prettier": "^1.19.1",
     "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",
     "semantic-release": "^16.0.4"
   },
   "dependencies": {
-    "@mixmaxhq/environment": "^3.8.0",
-    "@mixmaxhq/statsd-client": "^1.0.0",
-    "got": "^10.2.2"
+    "execa": "^4.0.0",
+    "lodash": "^4.17.15",
+    "toml": "^3.0.0",
+    "yargs": "^15.1.0"
   },
   "config": {
     "commitizen": {
