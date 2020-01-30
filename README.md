@@ -18,7 +18,7 @@ The git hooks are opt-in using the global mixmax configuration file `~/.config/m
 [git.hooks]
 commit_msg = true
 pre_push = true
-pre_push_mode = "all"
+pre_push_mode = "all" # Valid values: "all", "unpushed"
 ```
 
 (The syntax here is [TOML](https://github.com/toml-lang/toml).)
