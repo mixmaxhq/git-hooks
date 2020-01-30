@@ -48,7 +48,6 @@
     "eslint": "^6.8.0",
     "eslint-config-mixmax": "^4.7.0",
     "flow-bin": "^0.117.0",
-    "husky": "^4.2.1",
     "prettier": "^1.19.1",
     "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",
@@ -56,6 +55,7 @@
   },
   "dependencies": {
     "execa": "^4.0.0",
+    "husky": "^4.2.1",
     "lodash": "^4.17.15",
     "toml": "^3.0.0",
     "yargs": "^15.1.0"
