@@ -9,7 +9,7 @@ export default {
   command: '$0',
   description: 'Check the commit message',
   async handler() {
-    if (!expectEnabled('commit-msg')) return;
+    if (!(await expectEnabled('commit-msg'))) return;
 
     if (!process.env.HUSKY_GIT_PARAMS) {
       console.error('missing git parameter HUSKY_GIT_PARAMS');

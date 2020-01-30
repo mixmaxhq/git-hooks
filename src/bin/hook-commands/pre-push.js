@@ -30,7 +30,7 @@ export default {
   command: 'pre-push',
   description: 'Check the commits on the branch before pushing',
   async handler() {
-    if (!expectEnabled('pre-push')) return;
+    if (!(await expectEnabled('pre-push'))) return;
 
     const mode: string | null = await getMode('pre-push');
     switch (mode) {

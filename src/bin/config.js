@@ -21,7 +21,7 @@ function getHookKey(hook) {
 }
 
 export async function expectEnabled(hook: string) {
-  if (!isEnabled(hook)) {
+  if (!(await isEnabled(hook))) {
     if (process.stdin.isTTY) {
       console.warn('the commit-msg commit hook is not enabled');
       console.warn('please enable it in your ~/.config/mixmax/config file');
