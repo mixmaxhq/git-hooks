@@ -1,20 +1,42 @@
-# Template: Shared Module
+# Mixmax's git hooks
 
-This repository contains the template structure and boilerplate for a new shared module. It can run
-as-is to give you a sense for how everything functions, but you'll want to follow the instructions
-under "How to use."
+This repository contains the git hooks for Mixmax's development workflow. We use `commitlint` to
+reduce friction when using `semantic-release`, and desire to tighten the feedback cycle to further
+reduce friction.
+
+## Install
+
+```sh
+$ npm i -D @mixmaxhq/git-hooks @commitlint/cli
+```
+
+## Configure
+
+The git hooks are opt-in using the global mixmax configuration file `~/.config/mixmax/config`:
+
+```toml
+[git.hooks]
+commit_msg = true
+pre_push = true
+pre_push_mode = "all" # Valid values: "all", "unpushed"
+```
+
+(The syntax here is [TOML](https://github.com/toml-lang/toml).)
 
 ## How to use
 
-1. Replace all occurrences of `TEMPLATE_MODULE` in the copy of the repository with the name of the
-   service.
-2. Remove the `private` flag from `package.json` and update the `description`.
-3. If creating a new public module, change the `publishConfig.access` field in the `package.json` to
-   `public` - this will cause `semantic-release` to publish it for any user of `npm`. Add in the
-   appropriate `LICENSE` file and update the `license` field in `package.json`.
-4. Remove the example code from `src/index.js`.
-5. Rename the `module-template.sublime-project` file to use the name of the module.
-6. Update this README to remove the setup instructions and document the modules's purpose and API.
+Copy this to a `.huskyrc.js` file adjacent to the `.git` and `node_modules` directories of a
+project:
+
+```js
+module.exports = require('@mixmaxhq/git-hooks');
+
+// Husky explicitly greps for the hook itself to determine whether to run the hook. Here are the
+// hooks, to bypass this check:
+//
+// - pre-push
+// - commit-msg
+```
 
 ## Building
 
