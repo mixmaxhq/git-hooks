@@ -1,7 +1,7 @@
 import execa from 'execa';
-import semver from 'semver';
+import * as semver from 'semver';
 
-export const git = (...args) => execa('git', args).then(({ stdout }) => stdout);
+export const git = (...args: string[]): string => execa('git', args).then(({ stdout }) => stdout);
 
 async function getGitVersion() {
   // This produces a string like "git version 2.25.0"

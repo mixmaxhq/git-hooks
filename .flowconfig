@@ -6,6 +6,7 @@
 <PROJECT_ROOT>/dist/.*
 <PROJECT_ROOT>/node_modules/@babel/.*
 <PROJECT_ROOT>/node_modules/lodash/.*
+<PROJECT_ROOT>/node_modules/semver/.*
 <PROJECT_ROOT>/node_modules/toml/.*
 <PROJECT_ROOT>/node_modules/yargs/.*
 
