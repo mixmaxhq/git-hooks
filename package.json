@@ -46,7 +46,7 @@
     "cz-conventional-changelog": "^3.1.0",
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
-    "eslint-config-mixmax": "^4.7.0",
+    "eslint-config-mixmax": "^4.8.0",
     "flow-bin": "^0.117.0",
     "prettier": "^1.19.1",
     "rollup": "^1.30.1",
