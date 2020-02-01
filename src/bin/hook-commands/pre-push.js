@@ -19,9 +19,52 @@ async function getRemote() {
   throw new Error('cannot determine appropriate remote - please set upstream');
 }
 
-async function getDefaultBranch({ remote = true } = {}) {
-  const branch = await git('symbolic-ref', '--short', `refs/remotes/${await getRemote()}/HEAD`);
-  return remote ? branch : branch.slice(branch.indexOf('/') + 1);
+// Matches output from ls-remote like:
+//
+// $ git ls-remote --symref <url> HEAD
+// ref: refs/heads/master  HEAD
+// 6de4c9de8426252658f103e505e8f15ad710486c  HEAD
+const extractRef = /^ref:[ \t]+refs\/heads\/(\S+)[ \t]+HEAD\n\S+[ \t]+HEAD$/;
+
+async function getDefaultBranchFromRef(remote) {
+  return git('symbolic-ref', '--short', `refs/remotes/${remote}/HEAD`);
+}
+
+async function getDefaultBranchFromRemote(remote) {
+  const remoteUrl = await git('config', '--get', `remote.${remote}.url`);
+  const headRefs = await git('ls-remote', '--symref', remoteUrl, 'HEAD');
+  const match = extractRef.exec(headRefs);
+  if (!match) {
+    console.dir(headRefs);
+    throw new Error('unable to interpret ls-remote output');
+  }
+  return match[1];
+}
+
+async function maybeGetDefaultBranchFromRemote(err, remote) {
+  if (
+    !err.exitCode ||
+    typeof err.stderr !== 'string' ||
+    !err.stderr.includes('not a symbolic ref')
+  ) {
+    throw err;
+  }
+
+  console.warn();
+  console.warn('  please set the default branch for the repository:');
+  console.warn(
+    '  git symbolic-ref refs/remotes/origin/HEAD refs/heads/origin/\x1b[95m<default-branch>\x1b[m'
+  );
+  console.warn();
+  return getDefaultBranchFromRemote(remote);
+}
+
+async function getDefaultBranch({ includeRemote = true } = {}) {
+  const remote = await getRemote(),
+    branch = await getDefaultBranchFromRef(remote).catch((err) =>
+      maybeGetDefaultBranchFromRemote(err, remote)
+    );
+  return includeRemote ? branch : branch.slice(branch.indexOf('/') + 1);
 }
 
 export default {
