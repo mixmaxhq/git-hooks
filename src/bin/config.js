@@ -52,6 +52,12 @@ async function loadConfig() {
     throw new Error('cannot locate home directory with $HOME');
   }
 
-  const rawConfig = await readFile(`${process.env.HOME}/.config/mixmax/config`);
-  config = _.get(toml.parse(rawConfig), 'git.hooks') || null;
+  try {
+    const rawConfig = await readFile(`${process.env.HOME}/.config/mixmax/config`);
+    config = _.get(toml.parse(rawConfig), 'git.hooks') || null;
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      config = null;
+    }
+  }
 }
