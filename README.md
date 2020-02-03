@@ -24,6 +24,14 @@ pre_push_mode = "all" # required if pre_push is enabled
 
 (The syntax here is [TOML](https://github.com/toml-lang/toml).)
 
+### `commit_msg`
+
+This flag determines whether commitlint will run on commit messages before the commit is created.
+
+### `pre_push`
+
+This flag determines whether commitlint will run on the commit messages being pushed to the remote repository. It has two modes (`pre_push_mode`): `all` and `unpushed`. The `all` option lists the commits on the current branch since it diverged from the default branch and lints all of them. The `unpushed` option lists the commits on the current branch that aren't on the remote's copy of the branch and lints all of them.
+
 ## How to use
 
 Copy this to a `.huskyrc.js` file adjacent to the `.git` and `node_modules` directories of a
