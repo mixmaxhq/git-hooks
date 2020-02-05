@@ -35,7 +35,6 @@ async function getDefaultBranchFromRemote(remote) {
   const headRefs = await git('ls-remote', '--symref', remoteUrl, 'HEAD');
   const match = extractRef.exec(headRefs);
   if (!match) {
-    console.dir(headRefs);
     throw new Error('unable to interpret ls-remote output');
   }
   return match[1];
