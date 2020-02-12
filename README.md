@@ -6,6 +6,9 @@ reduce friction.
 
 ## Install
 
+Note that if you're in a `mixmaxhq` GitHub repository that uses `semantic-release`, these packages
+should already be installed. You might need to `git pull` and `npm ci`, and if you're still not seeing hooks in `.git/hooks`, double-check that you're running a version `npm` >= 6.13.4.
+
 ```sh
 $ npm i -D @mixmaxhq/git-hooks @commitlint/cli
 ```
