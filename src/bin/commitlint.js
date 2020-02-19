@@ -34,5 +34,6 @@ export async function commitlintOrExit(...args: string[]) {
     if (err instanceof LintError) {
       process.exit(1);
     }
+    throw err;
   });
 }

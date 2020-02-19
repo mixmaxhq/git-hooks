@@ -26,6 +26,7 @@ export default {
         // Already written to the output.
         process.exit(1);
       }
+      throw err;
     }
   },
 };
