@@ -16,7 +16,8 @@ export default {
       process.exit(1);
     }
 
-    // This will be handled by git itself.
+    // The empty case (just newlines and comments) will be handled by git itself.
+    // See https://github.com/conventional-changelog/commitlint/issues/615
     if (/^(?:\n*#.*)*\n*$/.test(await readFile(process.env.HUSKY_GIT_PARAMS, 'utf-8'))) return;
 
     try {
@@ -26,6 +27,7 @@ export default {
         // Already written to the output.
         process.exit(1);
       }
+      throw err;
     }
   },
 };
