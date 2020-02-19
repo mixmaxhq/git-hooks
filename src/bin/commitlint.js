@@ -24,6 +24,7 @@ export default async function commitlint(...args: string[]) {
     if (err.exitCode !== 1) {
       throw err;
     }
+    console.error('check \x1b[95m.git/COMMIT_EDITMSG\x1b[m to recover your commit message\n');
     throw new LintError();
   }
 }
