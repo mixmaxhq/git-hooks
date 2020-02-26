@@ -74,7 +74,8 @@ again. If that _still_ doesn't work, try `npm rebuild husky`. Still no dice? Rea
 
 ### Check for `.huskyrc.js`
 
-This should be installed for all repositories that use `@mixmaxhq/git-hooks` and `semantic-release` - if it's missing, try adding it in from another repository that has it configured, or reach out to
+This should be installed for all repositories that use `@mixmaxhq/git-hooks` and `semantic-release`
+\- if it's missing, try adding it in from another repository that has it configured, or reach out to
 [#core-team](https://mixmax.slack.com/archives/CFX7QK7PW).
 
 ### Verbose logging
