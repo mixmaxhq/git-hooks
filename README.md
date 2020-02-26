@@ -68,7 +68,7 @@ like `pre-commit` and `commit-msg`.
 | ![expected](https://user-images.githubusercontent.com/1348991/75392527-15fb6f80-58a1-11ea-8c51-85ae5ae0dc3d.png) | ![misconfigured](https://user-images.githubusercontent.com/1348991/75392560-257ab880-58a1-11ea-8666-179d8f2a5c93.png) |
 
 If you see the former, try running `npm ci` again. If that doesn't work, make sure you're running a
-version of `npm` newer than 6.13.4 - if you're not upgrade (it has a security fix anyway) - and try
+version of `npm` newer than 6.13.4 - if you're not, upgrade (it has a security fix anyway) - and try
 again. If that _still_ doesn't work, try `npm rebuild husky`. Still no dice? Reach out to
 [#core-team](https://mixmax.slack.com/archives/CFX7QK7PW).
 
