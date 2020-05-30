@@ -34,7 +34,7 @@
   "homepage": "https://github.com/mixmaxhq/git-hooks#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/preset-flow": "^7.8.3",
