@@ -6,7 +6,7 @@ import { promisify } from 'util';
 const readFile = promisify(fs.readFile);
 
 export default {
-  command: '$0',
+  command: 'commit-msg',
   description: 'Check the commit message',
   async handler() {
     if (!(await expectEnabled('commit-msg'))) return;
