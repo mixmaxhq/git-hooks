@@ -1,3 +1,10 @@
+### [1.1.1](https://github.com/mixmaxhq/git-hooks/compare/v1.1.0...v1.1.1) (2020-07-10)
+
+
+### Bug Fixes
+
+* **commit-msg:** use correct name for command invocation ([183eac4](https://github.com/mixmaxhq/git-hooks/commit/183eac441bd29fa35c482dcf97d801a3cc7d6fa2))
+
 ## [1.1.0](https://github.com/mixmaxhq/git-hooks/compare/v1.0.1...v1.1.0) (2020-02-19)
 
 
