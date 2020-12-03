@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/mixmaxhq/git-hooks/compare/v1.1.1...v1.2.0) (2020-12-03)
+
+
+### Features
+
+* make this module public ([ad3a6db](https://github.com/mixmaxhq/git-hooks/commit/ad3a6db042903078c1765fd3afa03d3c7f704296))
+
 ### [1.1.1](https://github.com/mixmaxhq/git-hooks/compare/v1.1.0...v1.1.1) (2020-07-10)
 
 
