@@ -27,7 +27,7 @@
     "Eli Skeggs <eli@mixmax.com> (https://mixmax.com)",
     "Enric Ribas <enric@mixmax.com> (https://mixmax.com)"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mixmaxhq/git-hooks/issues"
   },
@@ -76,6 +76,6 @@
     "extends": "@mixmaxhq/semantic-release-config"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   }
 }
