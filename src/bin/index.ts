@@ -8,11 +8,11 @@ type Command = {
   command: string;
   desc?: string;
   description?: string;
-  builder?: (arg0: yargs) => yargs;
-  handler: (args: Pojo) => unknown | Promise<unknown>;
+  builder?: (arg0: yargs.Argv<unknown>) => yargs.Argv<unknown>;
+  handler: (...args: unknown[]) => unknown | Promise<unknown>;
 };
 
-const addCommands = (yargs, commands: Command[]) =>
+const addCommands = (yargs: yargs.Argv<unknown>, commands: Command[]) =>
   commands.reduce(
     (yargs, cmd) =>
       yargs.command(

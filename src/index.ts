@@ -1,5 +1,5 @@
 const hookNames = ['commit-msg', 'pre-push'];
-export function getHooks(bin: string) {
+export function getHooks(bin: string): { hooks: Record<string, string> } {
   const hooks = {};
 
   for (const hook of hookNames) {

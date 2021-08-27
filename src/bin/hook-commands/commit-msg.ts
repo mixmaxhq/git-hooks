@@ -8,7 +8,7 @@ export default {
   command: 'commit-msg',
   description: 'Check the commit message',
 
-  async handler() {
+  async handler(): Promise<void> {
     if (!(await expectEnabled('commit-msg'))) return;
 
     if (!process.env.HUSKY_GIT_PARAMS) {

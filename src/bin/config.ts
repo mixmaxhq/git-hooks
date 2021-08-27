@@ -20,7 +20,7 @@ function getHookKey(hook) {
   return hookKey;
 }
 
-export async function expectEnabled(hook: string) {
+export async function expectEnabled(hook: string): Promise<boolean> {
   if (!(await isEnabled(hook))) {
     if (process.stdin.isTTY) {
       console.warn('the commit-msg commit hook is not enabled');

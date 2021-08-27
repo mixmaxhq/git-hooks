@@ -4,7 +4,8 @@ export class LintError extends Error {
     super('Check the commit');
   }
 }
-export default async function commitlint(...args: string[]) {
+
+export default async function commitlint(...args: string[]): Promise<void> {
   let cliImportPath;
 
   try {
@@ -19,6 +20,7 @@ export default async function commitlint(...args: string[]) {
     throw err;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const cliPath = require(cliImportPath);
 
   try {
@@ -34,7 +36,8 @@ export default async function commitlint(...args: string[]) {
     throw new LintError();
   }
 }
-export async function commitlintOrExit(...args: string[]) {
+
+export async function commitlintOrExit(...args: string[]): Promise<void> {
   return commitlint(...args).catch((err) => {
     if (err instanceof LintError) {
       process.exit(1);
