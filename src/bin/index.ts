@@ -1,16 +1,15 @@
 // Shebang added in rollup.config.js.
-
+import _ from 'lodash';
 import yargs from 'yargs';
+
 import commit_msg from './hook-commands/commit-msg';
 import pre_push from './hook-commands/pre-push';
-import _ from 'lodash';
-
 type Command = {
-  command: string,
-  desc?: string,
-  description?: string,
-  builder?: (yargs) => yargs,
-  handler: (args: Pojo) => mixed | Promise<mixed>,
+  command: string;
+  desc?: string;
+  description?: string;
+  builder?: (arg0: yargs) => yargs;
+  handler: (args: Pojo) => unknown | Promise<unknown>;
 };
 
 const addCommands = (yargs, commands: Command[]) =>
