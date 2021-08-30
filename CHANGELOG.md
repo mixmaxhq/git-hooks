@@ -1,3 +1,10 @@
+## [1.3.0-alpha.5](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.4...v1.3.0-alpha.5) (2021-08-30)
+
+
+### Bug Fixes
+
+* add she-bang to executable ([37809a1](https://github.com/mixmaxhq/git-hooks/commit/37809a1b2dd9333d258073d4e262ba8170445606))
+
 ## [1.3.0-alpha.4](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.3...v1.3.0-alpha.4) (2021-08-30)
 
 
