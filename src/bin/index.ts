@@ -1,4 +1,4 @@
-// Shebang added in rollup.config.js.
+#!/usr/bin/env node
 import _ from 'lodash';
 import yargs from 'yargs';
 
