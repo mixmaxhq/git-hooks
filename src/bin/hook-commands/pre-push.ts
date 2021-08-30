@@ -74,35 +74,30 @@ export default {
     if (!(await expectEnabled('pre-push'))) return;
     const mode: string | null = await getMode('pre-push');
 
-    switch (mode) {
-      case 'unpushed': {
-        const [localBranch, remoteBranch] = await Promise.all([
-          getCurrentBranch(),
-          getRemoteBranch(),
-        ]);
+    if (mode === 'unpushed') {
+      const [localBranch, remoteBranch] = await Promise.all([
+        getCurrentBranch(),
+        getRemoteBranch(),
+      ]);
 
-        if (remoteBranch) {
-          // TODO: what if history has diverged?
-          await commitlintOrExit('--from', remoteBranch, '--to', localBranch);
-          break;
-        }
+      if (remoteBranch) {
+        // TODO: what if history has diverged?
+        await commitlintOrExit('--from', remoteBranch, '--to', localBranch);
+        return;
       }
+    }
 
-      // fallthrough
-      case 'all': {
-        const defaultBranch = await getDefaultBranch();
-        await commitlintOrExit('--from', defaultBranch);
-        break;
-      }
-
-      default:
-        console.warn('  unknown pre-push mode');
-        console.warn(
-          '  check the pre_push_mode field in the git.hooks section of ~/.config/mixmax/config'
-        );
-        console.warn(`  valid values: "all", "unpushed" (got ${String(mode)})`);
-        console.warn('');
-        process.exit(1);
+    if (mode === 'unpushed' || mode === 'all') {
+      const defaultBranch = await getDefaultBranch();
+      await commitlintOrExit('--from', defaultBranch);
+    } else {
+      console.warn('  unknown pre-push mode');
+      console.warn(
+        '  check the pre_push_mode field in the git.hooks section of ~/.config/mixmax/config'
+      );
+      console.warn(`  valid values: "all", "unpushed" (got ${String(mode)})`);
+      console.warn('');
+      process.exit(1);
     }
   },
 };

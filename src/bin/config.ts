@@ -52,7 +52,7 @@ async function loadConfig() {
 
   try {
     const rawConfig = await readFile(`${process.env.HOME}/.config/mixmax/config`);
-    config = _.get(toml.parse(rawConfig), 'git.hooks') || null;
+    config = _.get(toml.parse(rawConfig.toString()), 'git.hooks') || null;
   } catch (err) {
     if (err.code === 'ENOENT') {
       config = null;
