@@ -1,3 +1,10 @@
+## [1.3.0-alpha.3](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.2...v1.3.0-alpha.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* fix commit-hook command ([582f288](https://github.com/mixmaxhq/git-hooks/commit/582f2885130b901114f5dced7c9895b2dee0d95f))
+
 ## [1.3.0-alpha.2](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.1...v1.3.0-alpha.2) (2021-08-30)
 
 
