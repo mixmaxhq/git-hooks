@@ -10,7 +10,7 @@
     "mixmax-git-hooks": "./dist/bin/index.js"
   },
   "scripts": {
-    "build": "rm -rf dist/ && tsc",
+    "build": "del-cli dist/ && tsc",
     "ci": "npm run lint",
     "ci:commitlint": "commitlint-jenkins --pr-only",
     "lint": "eslint . && tsc --noEmit",
@@ -45,7 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "cz-conventional-changelog": "^3.1.0",
-    "del-cli": "^3.0.0",
+    "del-cli": "^3.0.1",
     "eslint": "^7.32.0",
     "eslint-config-mixmax": "^4.17.0",
     "jest": "^27.1.0",
