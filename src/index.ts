@@ -10,4 +10,4 @@ export function getHooks(bin: string): { hooks: Record<string, string> } {
     hooks,
   };
 }
-export const { hooks } = getHooks('mixmax-git-hooks');
+export const { hooks } = getHooks('node mixmax-git-hooks');
