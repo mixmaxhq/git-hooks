@@ -1,3 +1,16 @@
+## [1.3.0-alpha.1](https://github.com/mixmaxhq/git-hooks/compare/v1.2.0...v1.3.0-alpha.1) (2021-08-30)
+
+
+### Features
+
+* automatic typescriptification ([8fd9875](https://github.com/mixmaxhq/git-hooks/commit/8fd98756849323e64187a6cb9a3098fcaa70edfd))
+
+
+### Bug Fixes
+
+* eslint errors -- no actual code changes ([f4a06e4](https://github.com/mixmaxhq/git-hooks/commit/f4a06e4c49539f22f320ea9b87b6bcc8d385b23e))
+* fix build errors (includes actual code changes) ([d63568b](https://github.com/mixmaxhq/git-hooks/commit/d63568b544cd6102d05f5af899eaf3fe0c3dbf18))
+
 ## [1.2.0](https://github.com/mixmaxhq/git-hooks/compare/v1.1.1...v1.2.0) (2020-12-03)
 
 
