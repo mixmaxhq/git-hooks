@@ -1,7 +1,7 @@
 {
   "extends": "@mixmaxhq/ts-config/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist/node"
+    "outDir": "dist",
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
