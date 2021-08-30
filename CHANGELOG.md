@@ -1,3 +1,10 @@
+## [1.3.0-alpha.2](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.1...v1.3.0-alpha.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* correct build directory ([1294293](https://github.com/mixmaxhq/git-hooks/commit/1294293f214754187e4bd81b8986f1087b366a23))
+
 ## [1.3.0-alpha.1](https://github.com/mixmaxhq/git-hooks/compare/v1.2.0...v1.3.0-alpha.1) (2021-08-30)
 
 

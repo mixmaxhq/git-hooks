@@ -1,6 +1,6 @@
 {
   "name": "@mixmaxhq/git-hooks",
-  "version": "1.3.0-alpha.1",
+  "version": "1.3.0-alpha.2",
   "description": "Shared git-hooks at Mixmax, for use with Husky.",
   "main": "./dist/index.js",
   "files": [
