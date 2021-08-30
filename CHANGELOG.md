@@ -1,3 +1,10 @@
+## [1.3.0-alpha.4](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.3...v1.3.0-alpha.4) (2021-08-30)
+
+
+### Bug Fixes
+
+* git hooks installation ([e967c51](https://github.com/mixmaxhq/git-hooks/commit/e967c519dc56a1a07da4238e3b5046ad4f426d31))
+
 ## [1.3.0-alpha.3](https://github.com/mixmaxhq/git-hooks/compare/v1.3.0-alpha.2...v1.3.0-alpha.3) (2021-08-30)
 
 
