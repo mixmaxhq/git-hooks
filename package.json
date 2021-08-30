@@ -7,7 +7,7 @@
     "dist"
   ],
   "bin": {
-    "mixmax-git-hooks": "node ./dist/bin/index.js"
+    "mixmax-git-hooks": "./dist/bin/index.js"
   },
   "scripts": {
     "build": "rm -rf dist/ && tsc",
