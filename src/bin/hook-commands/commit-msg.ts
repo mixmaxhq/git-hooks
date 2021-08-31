@@ -1,14 +1,14 @@
-import commitlint, { LintError } from '../commitlint';
-import { expectEnabled } from '../config';
 import fs from 'fs';
 import { promisify } from 'util';
 
+import commitlint, { LintError } from '../commitlint';
+import { expectEnabled } from '../config';
 const readFile = promisify(fs.readFile);
-
 export default {
   command: 'commit-msg',
   description: 'Check the commit message',
-  async handler() {
+
+  async handler(): Promise<void> {
     if (!(await expectEnabled('commit-msg'))) return;
 
     if (!process.env.HUSKY_GIT_PARAMS) {
@@ -27,6 +27,7 @@ export default {
         // Already written to the output.
         process.exit(1);
       }
+
       throw err;
     }
   },

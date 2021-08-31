@@ -1,5 +1,5 @@
 {
-  "extends": ["mixmax/node/withJest", "mixmax/node/disable-require-atomic", "mixmax/flow/strict"],
+  "extends": ["mixmax/node/withJest", "mixmax/node/disable-require-atomic", "mixmax/typescript"],
   "overrides": [
     {
       "files": ["src/bin/**"],

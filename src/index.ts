@@ -1,11 +1,13 @@
 const hookNames = ['commit-msg', 'pre-push'];
-
-export function getHooks(bin: string) {
+export function getHooks(bin: string): { hooks: Record<string, string> } {
   const hooks = {};
+
   for (const hook of hookNames) {
     hooks[hook] = `${bin} ${hook}`;
   }
-  return { hooks };
-}
 
+  return {
+    hooks,
+  };
+}
 export const { hooks } = getHooks('mixmax-git-hooks');

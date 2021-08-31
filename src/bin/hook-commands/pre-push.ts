@@ -1,8 +1,8 @@
+import { once } from 'lodash';
+
 import { commitlintOrExit } from '../commitlint';
 import { expectEnabled, getMode } from '../config';
-import { once } from 'lodash';
-import { git, getCurrentBranch } from '../git-utils';
-
+import { getCurrentBranch, git } from '../git-utils';
 const getRemoteBranch = once(async function getRemoteBranch() {
   const headRef = await git('symbolic-ref', '-q', 'HEAD');
   return git('for-each-ref', '--format=%(upstream:short)', headRef);
@@ -11,11 +11,9 @@ const getRemoteBranch = once(async function getRemoteBranch() {
 async function getRemote() {
   const remoteBranch = await getRemoteBranch();
   if (remoteBranch) return remoteBranch.slice(0, remoteBranch.indexOf('/'));
-
   const remotes = (await git('remote')).split(/\s+/);
   if (remotes.includes('origin')) return 'origin';
   if (remotes.length === 1) return remotes[0];
-
   throw new Error('cannot determine appropriate remote - please set upstream');
 }
 
@@ -34,9 +32,11 @@ async function getDefaultBranchFromRemote(remote) {
   const remoteUrl = await git('config', '--get', `remote.${remote}.url`);
   const headRefs = await git('ls-remote', '--symref', remoteUrl, 'HEAD');
   const match = extractRef.exec(headRefs);
+
   if (!match) {
     throw new Error('unable to interpret ls-remote output');
   }
+
   return match[1];
 }
 
@@ -69,38 +69,35 @@ async function getDefaultBranch({ includeRemote = true } = {}) {
 export default {
   command: 'pre-push',
   description: 'Check the commits on the branch before pushing',
-  async handler() {
+
+  async handler(): Promise<void> {
     if (!(await expectEnabled('pre-push'))) return;
-
     const mode: string | null = await getMode('pre-push');
-    switch (mode) {
-      case 'unpushed': {
-        const [localBranch, remoteBranch] = await Promise.all([
-          getCurrentBranch(),
-          getRemoteBranch(),
-        ]);
 
-        if (remoteBranch) {
-          // TODO: what if history has diverged?
-          await commitlintOrExit('--from', remoteBranch, '--to', localBranch);
-          break;
-        }
-      } // fallthrough
+    if (mode === 'unpushed') {
+      const [localBranch, remoteBranch] = await Promise.all([
+        getCurrentBranch(),
+        getRemoteBranch(),
+      ]);
 
-      case 'all': {
-        const defaultBranch = await getDefaultBranch();
-        await commitlintOrExit('--from', defaultBranch);
-        break;
+      if (remoteBranch) {
+        // TODO: what if history has diverged?
+        await commitlintOrExit('--from', remoteBranch, '--to', localBranch);
+        return;
       }
+    }
 
-      default:
-        console.warn('  unknown pre-push mode');
-        console.warn(
-          '  check the pre_push_mode field in the git.hooks section of ~/.config/mixmax/config'
-        );
-        console.warn(`  valid values: "all", "unpushed" (got ${String(mode)})`);
-        console.warn('');
-        process.exit(1);
+    if (mode === 'unpushed' || mode === 'all') {
+      const defaultBranch = await getDefaultBranch();
+      await commitlintOrExit('--from', defaultBranch);
+    } else {
+      console.warn('  unknown pre-push mode');
+      console.warn(
+        '  check the pre_push_mode field in the git.hooks section of ~/.config/mixmax/config'
+      );
+      console.warn(`  valid values: "all", "unpushed" (got ${String(mode)})`);
+      console.warn('');
+      process.exit(1);
     }
   },
 };
