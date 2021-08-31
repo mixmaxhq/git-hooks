@@ -1,3 +1,18 @@
+## [1.3.0](https://github.com/mixmaxhq/git-hooks/compare/v1.2.0...v1.3.0) (2021-08-31)
+
+
+### Features
+
+* automatic typescriptification ([8fd9875](https://github.com/mixmaxhq/git-hooks/commit/8fd98756849323e64187a6cb9a3098fcaa70edfd))
+
+
+### Bug Fixes
+
+* correct build directory and add she-bang to run hooks ([6fbd559](https://github.com/mixmaxhq/git-hooks/commit/6fbd559e9e103248d28c9e89eaa839577ee92639))
+* eslint errors -- no actual code changes ([f4a06e4](https://github.com/mixmaxhq/git-hooks/commit/f4a06e4c49539f22f320ea9b87b6bcc8d385b23e))
+* fix build errors (includes actual code changes) ([d63568b](https://github.com/mixmaxhq/git-hooks/commit/d63568b544cd6102d05f5af899eaf3fe0c3dbf18))
+* use del-cli for cross-platform compatibility ([c6cc226](https://github.com/mixmaxhq/git-hooks/commit/c6cc2269b3702cac69a1862f09568507e21681c5))
+
 ## [1.2.0](https://github.com/mixmaxhq/git-hooks/compare/v1.1.1...v1.2.0) (2020-12-03)
 
 
