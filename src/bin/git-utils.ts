@@ -6,7 +6,7 @@ export const git = (...args: string[]): Promise<string> =>
 async function getGitVersion() {
   // This produces a string like "git version 2.25.0"
   const version = await git('version');
-  return version.slice(version.lastIndexOf(' ') + 1);
+  return semver.coerce(version).version
 }
 
 export async function getCurrentBranch(): Promise<string> {
