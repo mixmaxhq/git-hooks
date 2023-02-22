@@ -14,5 +14,5 @@ export async function getCurrentBranch(): Promise<string> {
     throw new Error('please upgrade git to at least 2.22.0');
   }
 
-  return git('branch', '--show-current');
+  return await git('branch', '--show-current');
 }

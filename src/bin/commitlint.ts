@@ -38,7 +38,7 @@ export default async function commitlint(...args: string[]): Promise<void> {
 }
 
 export async function commitlintOrExit(...args: string[]): Promise<void> {
-  return commitlint(...args).catch((err) => {
+  return await commitlint(...args).catch((err) => {
     if (err instanceof LintError) {
       process.exit(1);
     }

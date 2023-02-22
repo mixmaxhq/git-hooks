@@ -5,7 +5,7 @@ import { expectEnabled, getMode } from '../config';
 import { getCurrentBranch, git } from '../git-utils';
 const getRemoteBranch = once(async function getRemoteBranch() {
   const headRef = await git('symbolic-ref', '-q', 'HEAD');
-  return git('for-each-ref', '--format=%(upstream:short)', headRef);
+  return await git('for-each-ref', '--format=%(upstream:short)', headRef);
 });
 
 async function getRemote() {
@@ -25,7 +25,7 @@ async function getRemote() {
 const extractRef = /^ref:[ \t]+refs\/heads\/(\S+)[ \t]+HEAD\n\S+[ \t]+HEAD$/;
 
 async function getDefaultBranchFromRef(remote) {
-  return git('symbolic-ref', '--short', `refs/remotes/${remote}/HEAD`);
+  return await git('symbolic-ref', '--short', `refs/remotes/${remote}/HEAD`);
 }
 
 async function getDefaultBranchFromRemote(remote) {
@@ -55,7 +55,7 @@ async function maybeGetDefaultBranchFromRemote(err, remote) {
     '  git symbolic-ref refs/remotes/origin/HEAD refs/heads/origin/\x1b[95m<default-branch>\x1b[m'
   );
   console.warn();
-  return getDefaultBranchFromRemote(remote);
+  return await getDefaultBranchFromRemote(remote);
 }
 
 async function getDefaultBranch({ includeRemote = true } = {}) {
