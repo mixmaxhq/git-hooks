@@ -92,7 +92,8 @@ Outputs a commonjs-compatible bundle to `dist/index.js`.
 
 `npm test`
 
-## Publishing
+## Publishing a new version
 
-Merging to master will automatically publish the package if commits with non-trivial changes have
-been introduced (per [commit conventions](https://www.conventionalcommits.org)).
+```
+GH_TOKEN=xxx npx semantic-release --no-ci
+```
