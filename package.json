@@ -52,7 +52,8 @@
     "prettier": "^2.3.2",
     "semantic-release": "^17.2.3",
     "ts-jest": "^27.0.5",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "@types/lodash": "^4.17.20"
   },
   "dependencies": {
     "execa": "^4.0.0",
